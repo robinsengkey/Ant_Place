@@ -36,9 +36,7 @@ namespace Ant_Place
                 else if (input == "search")
                     Search();
                 else
-                {
                     Console.WriteLine("\nInvalid command, type help for commands");
-                }
             }
         }
 
@@ -66,14 +64,8 @@ namespace Ant_Place
             {
                 try
                 {
-                    int legs;
-                    legs = int.Parse(Console.ReadLine());
-                    if (legs <= 0)
-                    {
-                        Console.WriteLine("Legs can only be between 1 to 6 legs, try again");
-                        return;
-                    }
-                    if (legs > 6)
+                    int legs = int.Parse(Console.ReadLine());
+                    if (legs <= 0 || legs > 6)
                     {
                         Console.WriteLine("Legs can only be between 1 to 6 legs, try again");
                         return;
@@ -141,6 +133,11 @@ namespace Ant_Place
             Console.WriteLine("Could not annihilate " + name + ".\nAnt " + name + " already doesn't exist");
         }
 
+        /*
+         * Robin:
+         * Hade funderat på att dela upp metoden i 2 olika, en för att hitta en myra efter
+         * namn och en efter antal ben. Det hade kanske gjort det lite lättare att läsa.
+         */
         private void Search()
         {
             //frågar först användaren hur myran ska sökas upp (ben eller namn), sedan letar efter en myra med likadant input av ben eller namn
@@ -191,40 +188,49 @@ namespace Ant_Place
             }
         }
 
+        /*
+         * Robin:
+         * Riktigt snygg klass!
+         */
         class Ant
         {
-            private string name;
-            private int legs;
-
-            public Ant(string name, int legs)
-            {
-                this.name = name;
-                this.legs = legs;
-            }
-
             public string Name
             {
-                get
-                {
-                    return name;
-                }
-                set
-                {
-                    name = value;
-                }
+                get; private set;
             }
 
             public int Legs
             {
-                get
-                {
-                    return legs;
-                }
-                set
-                {
-                    legs = value;
-                }
+                get; private set;
             }
+
+            public Ant(string name, int legs)
+            {
+                Name = name;
+                Legs = legs;
+            }
+
         }
     }
 }
+
+/*
+ * Robin:
+ * Snyggt jobbat! Du har skrivit koden med en tydlig och konsekvent stil,
+ * med bra användande av beskrivande namngivning.
+ * 
+ * Programmet verkar robust, och jag kan inte hitta några uppenbara fel
+ * som skulle krascha programmet. 
+ * 
+ * Det är synd att du inte fick med att myrornas namn skrivs ut med 
+ * inledande versal. Annars så fick du med allt på ett snyggt sätt!
+ * 
+ * Det har varit kul att se dig arbeta på lektionerna, speciellt senaste 
+ * veckorna! Det är jättebra att du tar hjälp av dina klasskamrater och
+ * mig när du undrar något, och tar ansvar för ditt eget lärande. Titta
+ * gärna igenom koden en gång till så att du verkligen förstår allt,
+ * och öva gärna på att skriva mindre program i liknande stil så det
+ * sätter sig!
+ * 
+ * Fortsätt så här, så kommer du blir grym! 
+ */
